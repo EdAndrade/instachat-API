@@ -1,0 +1,16 @@
+{
+	"display": "Node 14",
+	"extends": "@tsconfig/node14/tsconfig.json",
+
+	"compilerOptions": {
+		"module": "CommonJs",
+		"target": "es6",
+		"moduleResolution": "node",
+		"strict": true,
+		"esModuleInterop": true,
+		"sourceMap": true,
+		"outDir": "dist"
+	},
+
+	"lib": ["es2015"]
+}

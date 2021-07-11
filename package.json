@@ -1,0 +1,26 @@
+{
+  "name": "instachatAPI",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "ts-watch": "tsc -w",
+    "dev": "nodemon dist/server.js -HOST=0.0.0.0",
+    "dev-mode": "ts-watch && dev",
+	"test": "echo \"Error: no test specified\" && exit 1",
+	"lint": "eslint . --ext .ts .js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "4.28.2",
+    "@typescript-eslint/parser": "4.28.2",
+    "express": "4.17.1"
+  },
+  "devDependencies": {
+    "@tsconfig/node14": "1.0.1",
+    "@types/express": "4.17.13",
+    "eslint": "7.30.0"
+  }
+}
