@@ -1,10 +1,6 @@
-import express from 'express';
+import app from './app';
 
-const app = express();
-
-app.use(express.json());
-app.get('/api', (req, res) => {
-	res.json({
-		message: "Oi"
-	});
+app.listen(8080, ()=> {
+	console.log("listening on port 8080");
 });
+
