@@ -12,6 +12,18 @@ export default class ChatGeneratorController {
 
 	async generateChat(request: Request, response: Response){
 
-		return response.status(200);
+		const chatRequest: Chat = request.body;
+
+		this.chatGeneratorModel.saveGeneratedCodeInfo(chatRequest).then( chatResponse => {
+
+			if(chatResponse.success === true){
+
+				return response.status(200).json({
+					chatCode	: chatResponse.result.codeHash,
+					timeToInit	: chatResponse.result.timeToInit,
+					usersQtd	: chatResponse.result.timeToInit
+				});
+			}
+		});
 	}
 }

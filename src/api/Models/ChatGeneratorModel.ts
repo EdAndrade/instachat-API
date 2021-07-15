@@ -3,7 +3,7 @@ import { Chat }	from '../Types/ChatGenerator';
 
 export default class ChatGeneratorModel {
 
-	saveGeneratedCodeInfo(chat: Chat): Promise<{ success: boolean, result: unknown }>{
+	saveGeneratedCodeInfo(chat: Chat): Promise<{ success: boolean, result: any }>{
 
 		return new Promise( (resolve, reject) => {
 
