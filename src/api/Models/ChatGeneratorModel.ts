@@ -7,32 +7,41 @@ export default class ChatGeneratorModel {
 
 		return new Promise( (resolve, reject) => {
 
-			pool.query(
-				`INSERT INTO codes(code, users_qty, timeToInit) VALUES(?,?,?)`,[
-					chat.codeHash,
-					chat.UsersQuantity,
-					chat.timeToInit
-				],
-	
-				(error: any, results: any) => {
-	
-					if( (!!error) === true){
-						return reject({
-							success: false,
-							result: error
+			try{
+
+				pool.query(
+					`INSERT INTO chatsinfo(code, users_qty, timeToInit) VALUES(?,?,?)`,[
+						chat.codeHash,
+						chat.UsersQuantity,
+						chat.timeToInit
+					],
+		
+					(error: any, results: any) => {
+						
+						if( (!!error) === true){
+							reject({
+								success: false,
+								result: error
+							});
+						}
+		
+						resolve({
+							success: true,
+							result: {
+								...results
+							}
 						});
 					}
-	
-					resolve({
-						success: true,
-						result: {
-							...results
-						}
-					});
-				}
-			);
-		});
+				);
 
-		
+			}catch(error){
+				
+				reject({
+					success: false,
+					result: error
+				});
+			}
+
+		});
 	}
 }

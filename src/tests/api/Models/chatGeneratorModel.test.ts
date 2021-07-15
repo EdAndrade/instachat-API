@@ -4,13 +4,14 @@ describe('Testing chatGeneratorModel', () => {
 
 	let chatGeneratorModel: ChatGeneratorModel;
 
-	beforeAll(() => {
+	beforeAll((done) => {
 		chatGeneratorModel = new ChatGeneratorModel();
+		done();
 	});
 
 	describe('Testing chat generated info', () => {
 
-		it('The insertion should be successful', () => {
+		it('The insertion should be successful', (done) => {
 
 			chatGeneratorModel.saveGeneratedCodeInfo({
 				codeHash		: 'f3werfasfdfasdfs',
@@ -19,6 +20,7 @@ describe('Testing chatGeneratorModel', () => {
 
 			}).then( response => {
 				expect(response.success).toBe(true);
+				done();
 			});
 			
 		});

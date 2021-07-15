@@ -16,5 +16,9 @@
 
 	"include": [
 		"src","non-typed-modules.d.ts"
+	],
+
+	"exclude": [
+		"src/tests"
 	]
 }
