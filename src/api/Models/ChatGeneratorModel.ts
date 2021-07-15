@@ -8,7 +8,7 @@ export default class ChatGeneratorModel {
 		return new Promise( (resolve, reject) => {
 
 			pool.query(
-				`INSERT INTO codes(code, users_quantity, beginTime) VALUES(?,?,?)`,[
+				`INSERT INTO codes(code, users_qty, timeToInit) VALUES(?,?,?)`,[
 					chat.codeHash,
 					chat.UsersQuantity,
 					chat.timeToInit
