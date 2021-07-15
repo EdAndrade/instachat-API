@@ -6,7 +6,7 @@
   "scripts": {
     "ts-watch": "tsc -w",
     "dev": "nodemon dist/server.js -HOST=0.0.0.0",
-    "test": "jest",
+    "test": "jest --coverage",
     "lint": "eslint . --ext .ts .js"
   },
   "keywords": [],
