@@ -8,6 +8,7 @@ export default class ChatGeneratorController {
 
 	constructor(){
 		this.chatGeneratorModel	= new ChatGeneratorModel();
+		this.generateChat		= this.generateChat.bind(this);
 	}
 
 	async generateChat(request: Request, response: Response){

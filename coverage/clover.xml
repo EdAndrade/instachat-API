@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1626376354530" clover="3.2.0">
-  <project timestamp="1626376354530" name="All files">
-    <metrics statements="38" coveredstatements="32" conditionals="4" coveredconditionals="1" methods="8" coveredmethods="6" elements="50" coveredelements="39" complexity="0" loc="38" ncloc="38" packages="5" files="6" classes="6"/>
+<coverage generated="1626377369584" clover="3.2.0">
+  <project timestamp="1626377369584" name="All files">
+    <metrics statements="36" coveredstatements="32" conditionals="4" coveredconditionals="1" methods="7" coveredmethods="6" elements="47" coveredelements="39" complexity="0" loc="36" ncloc="36" packages="5" files="6" classes="6"/>
     <package name="api">
-      <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="app.ts" path="/home/best/Documentos/Projectos/instachat/instachatAPI/src/api/app.ts">
-        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
+        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
       </file>
       <file name="toTest.ts" path="/home/best/Documentos/Projectos/instachat/instachatAPI/src/api/toTest.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -25,14 +23,14 @@
       </file>
     </package>
     <package name="api.Controllers">
-      <metrics statements="7" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="1"/>
+      <metrics statements="7" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="2"/>
       <file name="ChatGeneratorController.ts" path="/home/best/Documentos/Projectos/instachat/instachatAPI/src/api/Controllers/ChatGeneratorController.ts">
-        <metrics statements="7" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="1"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
+        <metrics statements="7" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
         <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="21" count="0" type="stmt"/>
       </file>
@@ -41,8 +39,8 @@
       <metrics statements="9" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
       <file name="ChatGeneratorModel.ts" path="/home/best/Documentos/Projectos/instachat/instachatAPI/src/api/Models/ChatGeneratorModel.ts">
         <metrics statements="9" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="4" count="3" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
         <line num="10" count="2" type="stmt"/>
         <line num="12" count="2" type="stmt"/>
@@ -56,21 +54,21 @@
       <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="ChatGeneratorRoute.ts" path="/home/best/Documentos/Projectos/instachat/instachatAPI/src/api/Routes/ChatGeneratorRoute.ts">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
       </file>
     </package>
     <package name="config.database">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="connection.ts" path="/home/best/Documentos/Projectos/instachat/instachatAPI/src/config/database/connection.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="2" count="3" type="stmt"/>
-        <line num="4" count="3" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
       </file>
     </package>
   </project>

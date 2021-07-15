@@ -6,7 +6,7 @@ describe("POST /users", () => {
 
 	it("should respond with a 200 status code", (done) => {
 
-		supertest(app).post("/api/generate_code").send({
+		supertest(app).post("/api/chat/generate_code").send({
 			username: "username",
 			password: "password"
 		}).then( response => {
