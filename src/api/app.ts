@@ -11,8 +11,5 @@ app.use(`${routerRoot}/chat`, generateChatRoute);
 
 app.use(cors());
 app.use(express.json());
-app.post('/users', (req, res) => {
-	res.sendStatus(200);
-});
 
 export default app;
