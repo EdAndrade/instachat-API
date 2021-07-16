@@ -29,7 +29,7 @@ export default class ChatGeneratorController {
 
 			const randomNumber			= Math.random();
 			const dataToGenerateChat 	= 
-				`${String(chatRequest.usersQty)}${ckey.SECRET_KEY}${randomNumber}${chatRequest.timeToInit}`;
+				`${JSON.stringify(chatRequest)}${ckey.SECRET_KEY}${randomNumber}${request.headers.host}`;
 
 			chatRequest.codeHash = hashGenerator(dataToGenerateChat);
 		}
