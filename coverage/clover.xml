@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1626430645240" clover="3.2.0">
-  <project timestamp="1626430645240" name="All files">
-    <metrics statements="42" coveredstatements="37" conditionals="11" coveredconditionals="6" methods="8" coveredmethods="7" elements="61" coveredelements="50" complexity="0" loc="42" ncloc="42" packages="6" files="7" classes="7"/>
+<coverage generated="1626430834081" clover="3.2.0">
+  <project timestamp="1626430834081" name="All files">
+    <metrics statements="42" coveredstatements="39" conditionals="11" coveredconditionals="9" methods="8" coveredmethods="8" elements="61" coveredelements="56" complexity="0" loc="42" ncloc="42" packages="6" files="7" classes="7"/>
     <package name="api">
       <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="app.ts" path="/home/best/Documentos/Projectos/instachat/instachatAPI/src/api/app.ts">
@@ -23,18 +23,18 @@
       </file>
     </package>
     <package name="api.Controllers">
-      <metrics statements="10" coveredstatements="7" conditionals="9" coveredconditionals="5" methods="3" coveredmethods="2"/>
+      <metrics statements="10" coveredstatements="9" conditionals="9" coveredconditionals="8" methods="3" coveredmethods="3"/>
       <file name="ChatGeneratorController.ts" path="/home/best/Documentos/Projectos/instachat/instachatAPI/src/api/Controllers/ChatGeneratorController.ts">
-        <metrics statements="10" coveredstatements="7" conditionals="9" coveredconditionals="5" methods="3" coveredmethods="2"/>
+        <metrics statements="10" coveredstatements="9" conditionals="9" coveredconditionals="8" methods="3" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="16" count="2" type="stmt"/>
         <line num="18" count="2" type="stmt"/>
-        <line num="26" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="30" count="0" type="stmt"/>
+        <line num="26" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="28" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="30" count="1" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
       </file>
     </package>
@@ -44,12 +44,12 @@
         <metrics statements="9" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
         <line num="1" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
-        <line num="21" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="21" count="3" type="cond" truecount="1" falsecount="1"/>
         <line num="22" count="0" type="stmt"/>
-        <line num="28" count="2" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
       </file>
     </package>
