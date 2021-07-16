@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "ts-watch": "tsc -w",
-    "dev": "nodemon dist/server.js -HOST=0.0.0.0",
+    "dev": "nodemon dist/api/server.js -HOST=0.0.0.0",
     "test": "jest --coverage",
     "lint": "eslint . --ext .ts .js"
   },
@@ -13,9 +13,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/body-parser": "1.19.1",
     "@types/cors": "2.8.12",
     "@typescript-eslint/eslint-plugin": "4.28.2",
     "@typescript-eslint/parser": "4.28.2",
+    "body-parser": "1.19.0",
     "ckey": "1.0.2",
     "cors": "2.8.5",
     "dotenv": "10.0.0",

@@ -1,17 +1,39 @@
 import supertest 	from 'supertest';
 import app			from '../../../api/app';
 
-describe("POST /users", () => {
-	//should save the username and password to the database
+describe('Right path', () => {
 
-	it("should respond with a 200 status code", (done) => {
+	describe("POST /generate_code", () => {
+		//should save the username and password to the database
+	
+		it("should respond with a 200 status code", (done) => {
+	
+			supertest(app).post("/api/chat/generate_code").send({
+				usersQtd	: 3,
+				timeToInit	: '2020-02-02'
+			}).then( response => {
+				expect(response.statusCode).toBe(200);
+				done();
+			});
+		});
+	});
 
-		supertest(app).post("/api/chat/generate_code").send({
-			username: "username",
-			password: "password"
-		}).then( response => {
-			expect(response.statusCode).toBe(200);
-			done();
+});
+
+describe('Wrong path', () => {
+
+	describe("POST /generate_code", () => {
+		//should save the username and password to the database
+	
+		it("should respond with a 400 status code", (done) => {
+	
+			supertest(app).post("/api/chat/generate_code").send({
+				UsersQuantity	: 3,
+				timeToInit		: '2020-02-02'
+			}).then( response => {
+				expect(response.statusCode).toBe(400);
+				done();
+			});
 		});
 	});
 });

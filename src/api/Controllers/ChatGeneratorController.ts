@@ -11,20 +11,31 @@ export default class ChatGeneratorController {
 		this.generateChat		= this.generateChat.bind(this);
 	}
 
-	async generateChat(request: Request, response: Response){
+	async generateChat(request: Request, response: Response): Promise<Response>{
 
 		const chatRequest: Chat = request.body;
+		
+		const isChatRequestConsistent = (
 
-		this.chatGeneratorModel.saveGeneratedCodeInfo(chatRequest).then( chatResponse => {
+			typeof(chatRequest) === 'object' && (
+				('timeToInit' in chatRequest) && ('usersQtd' in chatRequest)
+			)
+
+		) ? true : false;
+		
+		return isChatRequestConsistent ? this.chatGeneratorModel.saveGeneratedCodeInfo(chatRequest).then( chatResponse => {
 
 			if(chatResponse.success === true){
-
+				
 				return response.status(200).json({
-					chatCode	: chatResponse.result.codeHash,
+					chatCode	: 'dafsdfasffsdfasdf',
 					timeToInit	: chatResponse.result.timeToInit,
-					usersQtd	: chatResponse.result.timeToInit
+					usersQtd	: chatResponse.result.usersQtd
 				});
+
+			}else{
+				return response.status(500).json(chatResponse.result);
 			}
-		});
+		}) : response.sendStatus(400);
 	}
 }

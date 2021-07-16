@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.43% </span>
+                <span class="strong">72.73% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/7</span>
+                <span class='fraction'>8/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>3/9</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.43% </span>
+                <span class="strong">70% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/7</span>
+                <span class='fraction'>7/10</span>
             </div>
         
             
@@ -85,7 +85,19 @@
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -95,13 +107,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -110,6 +131,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -123,23 +147,35 @@ export default class ChatGeneratorController {
 &nbsp;
 	constructor(){
 		this.chatGeneratorModel	= new ChatGeneratorModel();
+		this.generateChat		= this.generateChat.bind(this);
 	}
 &nbsp;
-	async generateChat(request: Request, response: Response){
+	async generateChat(request: Request, response: Response): Promise&lt;Response&gt;{
 &nbsp;
-		const chatRequest: Chat = request.body;
+		const chatRequest = request.body; console.log(request.params, request.body, request);
+		
+		const isChatRequestConsistent = (
 &nbsp;
-		this.chatGeneratorModel.saveGeneratedCodeInfo(chatRequest).then( <span class="fstat-no" title="function not covered" >chatResponse </span>=&gt; {
+			typeof(chatRequest) === 'object' &amp;&amp; (
+				(<span class="branch-1 cbranch-no" title="branch not covered" >'timeToInit' in chatRequest)</span> &amp;&amp; (<span class="branch-2 cbranch-no" title="branch not covered" >'usersQtd' in chatRequest)</span>
+			)
+&nbsp;
+		) ? <span class="branch-0 cbranch-no" title="branch not covered" >true </span>: false;
+		
+		return isChatRequestConsistent ? <span class="branch-0 cbranch-no" title="branch not covered" >this.chatGeneratorModel.saveGeneratedCodeInfo(chatRequest).then( <span class="fstat-no" title="function not covered" >chatResponse </span>=&gt; {</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >			if(chatResponse.success === true){</span>
-&nbsp;
+				
 <span class="cstat-no" title="statement not covered" >				return response.status(200).json({</span>
-					chatCode	: chatResponse.result.codeHash,
+					chatCode	: 'dafsdfasffsdfasdf',
 					timeToInit	: chatResponse.result.timeToInit,
-					usersQtd	: chatResponse.result.timeToInit
+					usersQtd	: chatResponse.result.usersQtd
 				});
+&nbsp;
+			}else{
+<span class="cstat-no" title="statement not covered" >				return response.status(500).json(chatResponse.result);</span>
 			}
-		});
+		}) : response.sendStatus(400);
 	}
 }</pre></td></tr></table></pre>
 
@@ -148,7 +184,7 @@ export default class ChatGeneratorController {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Jul 15 2021 20:29:29 GMT+0100 (Hora padrão da África Ocidental)
+                at Fri Jul 16 2021 10:33:53 GMT+0100 (Hora padrão da África Ocidental)
             </div>
         </div>
         <script src="../../prettify.js"></script>
