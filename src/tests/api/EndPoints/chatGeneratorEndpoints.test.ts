@@ -35,5 +35,16 @@ describe('Wrong path', () => {
 				done();
 			});
 		});
+
+		it("should respond with a 400 status code", (done) => {
+	
+			supertest(app).post("/api/chat/generate_code").send({
+				usersQty		: "2",
+				timeToInit		: '2020-02-02'
+			}).then( response => {
+				expect(response.statusCode).toBe(400);
+				done();
+			});
+		});
 	});
 });
