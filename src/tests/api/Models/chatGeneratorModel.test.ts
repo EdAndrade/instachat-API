@@ -16,7 +16,7 @@ describe('Testing chatGeneratorModel', () => {
 
 			chatGeneratorModel.saveGeneratedCodeInfo({
 				codeHash		: 'f3werfasfdfasdfs',
-				UsersQuantity	: 3,
+				usersQty		: 3,
 				timeToInit		: '2020-02-02'
 
 			}).then( response => {
@@ -30,14 +30,14 @@ describe('Testing chatGeneratorModel', () => {
 
 			chatGeneratorModel.saveGeneratedCodeInfo({
 				codeHash		: 'f3werfasfdfasdfs',
-				UsersQuantity	: 3,
+				usersQty		: 3,
 				timeToInit		: '2020-02-02'
 
 			}).then( response => {
 
 				expect(response.result).toMatchObject<Chat>({
 					codeHash		: 'f3werfasfdfasdfs',
-					UsersQuantity	: 3,
+					usersQty		: 3,
 					timeToInit		: '2020-02-02'
 				});
 
