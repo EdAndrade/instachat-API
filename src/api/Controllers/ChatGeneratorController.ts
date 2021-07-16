@@ -21,7 +21,7 @@ export default class ChatGeneratorController {
 
 			typeof(chatRequest) === 'object' && (
 				('timeToInit' in chatRequest) && ('usersQty' in chatRequest)
-			)
+			) && ( typeof(chatRequest.timeToInit) === 'string' ) && ( typeof(chatRequest.usersQty) === 'number' )
 
 		) ? true : false;
 
