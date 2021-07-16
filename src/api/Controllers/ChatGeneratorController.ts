@@ -2,6 +2,7 @@ import ChatGeneratorModel 		from '../Models/ChatGeneratorModel';
 import { Request, Response }	from 'express';
 import { Chat }					from '../Types/ChatGenerator';
 import ckey						from 'ckey';
+import hashGenerator			from '../Services/GenerateHashService';
 
 export default class ChatGeneratorController {
 
@@ -30,7 +31,7 @@ export default class ChatGeneratorController {
 			const dataToGenerateChat 	= 
 				`${String(chatRequest.usersQty)}${ckey.SECRET_KEY}${randomNumber}${chatRequest.timeToInit}`;
 
-			chatRequest.codeHash = dataToGenerateChat;
+			chatRequest.codeHash = hashGenerator(dataToGenerateChat);
 		}
 		
 		return isChatRequestConsistent ? this.chatGeneratorModel.saveGeneratedCodeInfo(chatRequest).then( chatResponse => {
