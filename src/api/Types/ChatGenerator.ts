@@ -1,5 +1,5 @@
 export interface Chat {
 	codeHash		: string,
-	UsersQuantity	: number,
+	usersQty		: number,
 	timeToInit		: string
 }

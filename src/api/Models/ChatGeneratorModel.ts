@@ -12,7 +12,7 @@ export default class ChatGeneratorModel {
 				pool.query(
 					`INSERT INTO chatsinfo(code, users_qty, timeToInit) VALUES(?,?,?)`,[
 						chat.codeHash,
-						chat.UsersQuantity,
+						chat.usersQty,
 						chat.timeToInit
 					],
 		

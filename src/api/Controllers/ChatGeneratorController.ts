@@ -18,7 +18,7 @@ export default class ChatGeneratorController {
 		const isChatRequestConsistent = (
 
 			typeof(chatRequest) === 'object' && (
-				('timeToInit' in chatRequest) && ('usersQtd' in chatRequest)
+				('timeToInit' in chatRequest) && ('usersQty' in chatRequest)
 			)
 
 		) ? true : false;
@@ -30,7 +30,7 @@ export default class ChatGeneratorController {
 				return response.status(200).json({
 					chatCode	: 'dafsdfasffsdfasdf',
 					timeToInit	: chatResponse.result.timeToInit,
-					usersQtd	: chatResponse.result.usersQtd
+					usersQty	: chatResponse.result.usersQty
 				});
 
 			}else{
