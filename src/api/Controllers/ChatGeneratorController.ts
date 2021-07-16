@@ -1,6 +1,7 @@
 import ChatGeneratorModel 		from '../Models/ChatGeneratorModel';
 import { Request, Response }	from 'express';
 import { Chat }					from '../Types/ChatGenerator';
+import ckey						from 'ckey';
 
 export default class ChatGeneratorController {
 
@@ -22,13 +23,22 @@ export default class ChatGeneratorController {
 			)
 
 		) ? true : false;
+
+		if(isChatRequestConsistent){
+
+			const randomNumber			= Math.random();
+			const dataToGenerateChat 	= 
+				`${String(chatRequest.usersQty)}${ckey.SECRET_KEY}${randomNumber}${chatRequest.timeToInit}`;
+
+			chatRequest.codeHash = dataToGenerateChat;
+		}
 		
 		return isChatRequestConsistent ? this.chatGeneratorModel.saveGeneratedCodeInfo(chatRequest).then( chatResponse => {
 
 			if(chatResponse.success === true){
 				
 				return response.status(200).json({
-					chatCode	: 'dafsdfasffsdfasdf',
+					chatCode	: chatResponse.result.codeHash,
 					timeToInit	: chatResponse.result.timeToInit,
 					usersQty	: chatResponse.result.usersQty
 				});
