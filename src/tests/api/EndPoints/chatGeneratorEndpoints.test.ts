@@ -9,7 +9,7 @@ describe('Right path', () => {
 		it("should respond with a 200 status code", (done) => {
 	
 			supertest(app).post("/api/chat/generate_code").send({
-				usersQtd	: 3,
+				usersQty	: 3,
 				timeToInit	: '2020-02-02'
 			}).then( response => {
 				expect(response.statusCode).toBe(200);
