@@ -10,7 +10,7 @@ describe('Right path', () => {
 	
 			supertest(app).post("/api/chat/generate_code").send({
 				usersQty	: 3,
-				timeToInit	: '2020-02-02'
+				timeToInit	: '02-02-2020'
 			}).then( response => {
 				expect(response.statusCode).toBe(200);
 				done();
