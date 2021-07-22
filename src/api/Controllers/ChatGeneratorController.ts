@@ -15,24 +15,9 @@ export default class ChatGeneratorController {
 
 	async generateChat(request: Request, response: Response): Promise<Response>{
 
-		const chatRequest: Chat = request.body;
-		
-		const isChatRequestConsistent = (
-
-			typeof(chatRequest) === 'object' && (
-				('timeToInit' in chatRequest) && ('usersQty' in chatRequest)
-			) && ( typeof(chatRequest.timeToInit) === 'string' ) && ( typeof(chatRequest.usersQty) === 'number' )
-
-		) ? true : false;
-
-		if(isChatRequestConsistent){
-
-			const randomNumber			= Math.random();
-			const dataToGenerateChat 	= 
-				`${JSON.stringify(chatRequest)}${ckey.SECRET_KEY}${randomNumber}${request.headers.host}`;
-
-			chatRequest.codeHash = hashGenerator(dataToGenerateChat);
-		}
+		const chatRequest: Chat 		= request.body;
+		const isChatRequestConsistent	= this.checkChatRequestConsistency(chatRequest);
+		chatRequest.codeHash			= this.generateCodeHash(chatRequest, request);
 		
 		return isChatRequestConsistent ? this.chatGeneratorModel.saveGeneratedCodeInfo(chatRequest).then( chatResponse => {
 
@@ -48,5 +33,34 @@ export default class ChatGeneratorController {
 				return response.status(500).json(chatResponse.result);
 			}
 		}) : response.sendStatus(400);
+	}
+
+	checkChatRequestConsistency(chat: Chat): boolean{
+
+		const isChatRequestConsistent = 
+		
+			typeof(chat) === 'object' && (
+
+				('timeToInit' in chat) && ('usersQty' in chat)
+
+			) && ( 
+				
+				typeof(chat.timeToInit) === 'string' ) && ( typeof(chat.usersQty) === 'number'
+				
+			) && (
+
+				/(\d{2})-(\d{2})-(\d{4})/.test(chat.timeToInit)
+			);
+
+		return isChatRequestConsistent;
+	}
+
+	generateCodeHash(chat: Chat, request: Request): string {
+
+		const randomNumber			= Math.random();
+		const dataToGenerateChat 	= `${JSON.stringify(chat)}${ckey.SECRET_KEY}${randomNumber}${request.headers.host}`;
+		const codeHash = hashGenerator(dataToGenerateChat);
+
+		return codeHash;
 	}
 }
