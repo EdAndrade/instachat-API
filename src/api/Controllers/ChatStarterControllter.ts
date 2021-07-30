@@ -2,6 +2,10 @@ import { Request, Response }	from 'express';
 
 export default class ChatStarterController {
 
+	constructor(){
+		this.startChat = this.startChat.bind(this);
+	}
+
 	async startChat(request: Request, response: Response): Promise<Response>{
 		
 		const chatCode 				= request.body.chatCode;
