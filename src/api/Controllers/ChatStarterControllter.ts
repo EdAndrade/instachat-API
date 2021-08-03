@@ -23,7 +23,16 @@ export default class ChatStarterController {
 		return isChatCodeConsitent;
 	}
 	
-	private checkIfChatAlreadyExists(chatCode: string){
-		
+	private checkIfChatAlreadyExists(chatCode: string): boolean{
+		const chatRoom = this.activeChatRooms.filter( chat => chatCode === chat.chatCode);
+		return chatRoom.length > 0;
+	}
+
+	private addNewElementToChatRoom(chatCode: string, newElement: string){
+		this.activeChatRooms.forEach( chatRoom => {
+			if(chatRoom.chatCode === chatCode){
+				chatRoom.chatElements.push(newElement);
+			}
+		});
 	}
 }
