@@ -1,8 +1,12 @@
 import { Request, Response }	from 'express';
+import { ChatRoom }				from '../Types/ChatStarter';
 
 export default class ChatStarterController {
 
+	private activeChatRooms: Array<ChatRoom>;
+
 	constructor(){
+		this.activeChatRooms = [];
 		this.startChat = this.startChat.bind(this);
 	}
 
@@ -14,8 +18,12 @@ export default class ChatStarterController {
 		return isChatCodeConsitent ? response.sendStatus(200) : response.sendStatus(400);
 	}
 
-	checkChatcodeIntegrity(chatCode: string): boolean {
+	private checkChatcodeIntegrity(chatCode: string): boolean {
 		const isChatCodeConsitent = typeof(chatCode) === 'string' && ( chatCode.length === 32 );
 		return isChatCodeConsitent;
+	}
+	
+	private checkIfChatAlreadyExists(chatCode: string){
+		
 	}
 }
