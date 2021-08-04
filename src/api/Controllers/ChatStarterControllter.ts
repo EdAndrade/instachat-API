@@ -3,10 +3,7 @@ import { ChatRoom }				from '../Types/ChatStarter';
 
 export default class ChatStarterController {
 
-	private activeChatRooms: Array<ChatRoom>;
-
 	constructor(){
-		this.activeChatRooms = [];
 		this.startChat = this.startChat.bind(this);
 	}
 
@@ -22,7 +19,17 @@ export default class ChatStarterController {
 		const isChatCodeConsitent = typeof(chatCode) === 'string' && ( chatCode.length === 32 );
 		return isChatCodeConsitent;
 	}
-	
+
+}
+
+class handleChatRooms {
+
+	private activeChatRooms: Array<ChatRoom>;
+
+	constructor(){
+		this.activeChatRooms = [];
+	}
+
 	private checkIfChatAlreadyExists(chatCode: string): boolean{
 		const chatRoom = this.activeChatRooms.filter( chat => chatCode === chat.chatCode);
 		return chatRoom.length > 0;
