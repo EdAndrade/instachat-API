@@ -1,5 +1,6 @@
 export interface ChatRoom {
 	chatCode		: string,
 	chatConnection	: WebSocket,
-	chatElements	: Array<string>
+	chatElements	: Array<string>,
+	elementsQtd		: number
 }

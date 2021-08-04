@@ -28,11 +28,20 @@ export default class ChatStarterController {
 		return chatRoom.length > 0;
 	}
 
-	private addNewElementToChatRoom(chatCode: string, newElement: string){
+	// private addNewChatRoom(chatCode: string, userQtd: number){
+
+	// }
+
+	private addNewElementToChatRoom(chatCode: string, newElement: string): boolean{
+		let isDone = false;
+
 		this.activeChatRooms.forEach( chatRoom => {
-			if(chatRoom.chatCode === chatCode){
+			if( (chatRoom.chatCode === chatCode) && (chatRoom.elementsQtd < chatRoom.chatElements.length) ){
 				chatRoom.chatElements.push(newElement);
+				isDone = true;
 			}
 		});
+
+		return isDone;
 	}
 }
