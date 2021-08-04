@@ -26,7 +26,8 @@ export default class ChatGeneratorController {
 				return response.status(200).json({
 					chatCode	: chatResponse.result.codeHash,
 					timeToInit	: chatResponse.result.timeToInit,
-					usersQty	: chatResponse.result.usersQty
+					usersQty	: chatResponse.result.usersQty,
+					dateToInit	: chatResponse.result.dateToInit
 				});
 
 			}else{
@@ -41,7 +42,7 @@ export default class ChatGeneratorController {
 		
 			typeof(chat) === 'object' && (
 
-				('timeToInit' in chat) && ('usersQty' in chat)
+				('timeToInit' in chat) && ('usersQty' in chat) && ('dateToInit' in chat) 
 
 			) && ( 
 				
@@ -49,7 +50,11 @@ export default class ChatGeneratorController {
 				
 			) && (
 
-				/(\d{2})-(\d{2})-(\d{4})/.test(chat.timeToInit)
+				/(\d{2})-(\d{2})-(\d{4})/.test(chat.dateToInit)
+
+			) && (
+
+				/(\d{2}):(\d{2})/.test(chat.timeToInit)
 			);
 
 		return isChatRequestConsistent;
