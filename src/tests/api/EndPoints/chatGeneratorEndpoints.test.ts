@@ -10,7 +10,8 @@ describe('Right path', () => {
 	
 			supertest(app).post("/api/chat/generate_code").send({
 				usersQty	: 3,
-				timeToInit	: '02-02-2020'
+				timeToInit	: '12:04',
+				dateToInit	: '02-02-2020'
 			}).then( response => {
 				expect(response.statusCode).toBe(200);
 				done();
@@ -23,13 +24,13 @@ describe('Right path', () => {
 describe('Wrong path', () => {
 
 	describe("POST /generate_code", () => {
-		//should save the username and password to the database
 	
 		it("should respond with a 400 status code", (done) => {
 	
 			supertest(app).post("/api/chat/generate_code").send({
 				UsersQuantity	: 3,
-				timeToInit		: '2020-02-02'
+				timeToInit		: '13',
+				dateToInit		: '02-02-2020'
 			}).then( response => {
 				expect(response.statusCode).toBe(400);
 				done();
@@ -41,6 +42,18 @@ describe('Wrong path', () => {
 			supertest(app).post("/api/chat/generate_code").send({
 				usersQty		: "2",
 				timeToInit		: '2020-02-02'
+			}).then( response => {
+				expect(response.statusCode).toBe(400);
+				done();
+			});
+		});
+
+		it("should respond with a 400 status code", (done) => {
+	
+			supertest(app).post("/api/chat/generate_code").send({
+				usersQty		: "2",
+				timeToInit		: '2020-02-02',
+				dateToInit		: '15'
 			}).then( response => {
 				expect(response.statusCode).toBe(400);
 				done();
