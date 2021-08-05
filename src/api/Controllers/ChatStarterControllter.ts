@@ -35,6 +35,10 @@ class handleChatRooms {
 		return chatRoom.length > 0;
 	}
 
+	private getChatInfo(chatCode: string){
+
+	}
+
 	// private addNewChatRoom(chatCode: string, userQtd: number){
 
 	// }
