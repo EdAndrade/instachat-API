@@ -8,7 +8,7 @@ export default class ChatStarterModel {
 
 			try{
 
-				pool.query(`SELECT * FROM chatsinfo WHERE chatCode = ?`,[chatCode],(error, result, fields) => {
+				pool.query(`SELECT * FROM chatsinfo WHERE code = ?`,[chatCode],(error, result, fields) => {
 					
 					if((!!error) === true){
 

@@ -8,7 +8,7 @@ describe('Right path', () => {
 		it('should response with a 200 status code', (done) => {
 
 			supertest(app).post('/api/chat/start_chat').send({
-				chatCode: 'dk29dl1k3h#do1k3lsi%djap.ldpi12d'
+				chatCode: 'f105c653282de0c01c2f7babd9b6589b'
 			}).then( response => {
 				expect(response.statusCode).toBe(200);
 				done();
