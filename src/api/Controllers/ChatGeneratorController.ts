@@ -38,6 +38,10 @@ export default class ChatGeneratorController {
 
 	checkChatRequestConsistency(chat: Chat): boolean{
 
+		const splitedDate: Array<string> = chat.dateToInit.split('-');
+		const day = Number(splitedDate[0]);
+		const month = Number(splitedDate[1]);
+
 		const isChatRequestConsistent = 
 		
 			typeof(chat) === 'object' && (
@@ -50,7 +54,7 @@ export default class ChatGeneratorController {
 				
 			) && (
 
-				/(\d{2})-(\d{2})-(\d{4})/.test(chat.dateToInit)
+				(/(\d{2})-(\d{2})-(\d{4})/.test(chat.dateToInit)) && (day < 32 ) && (month < 13)
 
 			) && (
 
