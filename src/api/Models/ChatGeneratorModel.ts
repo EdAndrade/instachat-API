@@ -1,4 +1,4 @@
-import pool		from '../../config/database/connection';
+import pool		from '../Data/Database/connection';
 import { Chat }	from '../Types/ChatGenerator';
 
 export default class ChatGeneratorModel {
