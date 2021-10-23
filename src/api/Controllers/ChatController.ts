@@ -44,14 +44,14 @@ export default class ChatController {
 
 				return response.status(200).json({
 					success: false,
-					message: usersQuantityValidation.message
+					message: requestBodyValidation.message
 				});
 
 			}else{
 
 				return response.status(400).json({
 					success: false,
-					message: usersQuantityValidation.message
+					message: requestBodyValidation.message
 				});
 			}
 
