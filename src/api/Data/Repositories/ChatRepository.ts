@@ -11,11 +11,9 @@ export default class ChatRepository {
 			try{
 
 				pool.query(
-					`INSERT INTO chatsinfo(code, users_qty, dateToInit, timeToInit) VALUES(?,?,?,?)`,[
-						chat.codeHash,
+					`INSERT INTO chatsinfo(code, users_qty) VALUES(?,?)`,[
+						chat.code,
 						chat.usersQty,
-						chat.dateToInit,
-						chat.timeToInit
 					],
 		
 					(error: unknown, results: any) => {

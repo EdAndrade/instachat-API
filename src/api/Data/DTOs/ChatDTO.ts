@@ -1,4 +1,5 @@
 export interface CreateChatDTO {
+	code			: string,
 	usersQty		: number,
 }
 
