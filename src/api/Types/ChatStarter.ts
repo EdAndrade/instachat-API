@@ -1,6 +1,12 @@
 export interface ChatRoom {
 	chatCode		: string,
-	chatConnection	: WebSocket,
 	chatElements	: Array<string>,
-	elementsQtd		: number
+	usersQty		: number,
+	timeToInit		: string,
+	dateToInit		: string,
+}
+
+export interface ProcessResult{
+	success: boolean,
+	message: string
 }

@@ -1,71 +1,75 @@
-import ChatGeneratorModel 		from '../Models/ChatGeneratorModel';
-import { Request, Response }	from 'express';
-import { Chat }					from '../Types/ChatGenerator';
-import ckey						from 'ckey';
-import hashGenerator			from '../Services/GenerateHashService';
+// import ChatGeneratorModel 		from '../Models/ChatGeneratorModel';
+// import { Request, Response }	from 'express';
+// import { Chat }					from '../Types/ChatGenerator';
+// import ckey						from 'ckey';
+// import hashGenerator			from '../Services/GenerateHashService';
 
-export default class ChatGeneratorController {
+// export default class ChatGeneratorController {
 
-	private readonly chatGeneratorModel: ChatGeneratorModel;
+// 	private readonly chatGeneratorModel: ChatGeneratorModel;
 
-	constructor(){
-		this.chatGeneratorModel	= new ChatGeneratorModel();
-		this.generateChat		= this.generateChat.bind(this);
-	}
+// 	constructor(){
+// 		this.chatGeneratorModel	= new ChatGeneratorModel();
+// 		this.generateChat		= this.generateChat.bind(this);
+// 	}
 
-	async generateChat(request: Request, response: Response): Promise<Response>{
+// 	async generateChat(request: Request, response: Response): Promise<Response>{
 
-		const chatRequest: Chat 		= request.body;
-		const isChatRequestConsistent	= this.checkChatRequestConsistency(chatRequest);
-		chatRequest.codeHash			= this.generateCodeHash(chatRequest, request);
+// 		const chatRequest: Chat 		= request.body;
+// 		const isChatRequestConsistent	= this.checkChatRequestConsistency(chatRequest);
+// 		chatRequest.codeHash			= this.generateCodeHash(chatRequest, request);
 		
-		return isChatRequestConsistent ? this.chatGeneratorModel.saveGeneratedCodeInfo(chatRequest).then( chatResponse => {
+// 		return isChatRequestConsistent ? this.chatGeneratorModel.saveGeneratedCodeInfo(chatRequest).then( chatResponse => {
 
-			if(chatResponse.success === true){
+// 			if(chatResponse.success === true){
 				
-				return response.status(200).json({
-					chatCode	: chatResponse.result.codeHash,
-					timeToInit	: chatResponse.result.timeToInit,
-					usersQty	: chatResponse.result.usersQty,
-					dateToInit	: chatResponse.result.dateToInit
-				});
+// 				return response.status(200).json({
+// 					chatCode	: chatResponse.result.codeHash,
+// 					timeToInit	: chatResponse.result.timeToInit,
+// 					usersQty	: chatResponse.result.usersQty,
+// 					dateToInit	: chatResponse.result.dateToInit
+// 				});
 
-			}else{
-				return response.status(500).json(chatResponse.result);
-			}
-		}) : response.sendStatus(400);
-	}
+// 			}else{
+// 				return response.status(500).json(chatResponse.result);
+// 			}
+// 		}) : response.sendStatus(400);
+// 	}
 
-	checkChatRequestConsistency(chat: Chat): boolean{
+// 	checkChatRequestConsistency(chat: Chat): boolean{
 
-		const isChatRequestConsistent = 
+// 		const splitedDate: Array<string> = chat.dateToInit.split('-');
+// 		const day = Number(splitedDate[0]);
+// 		const month = Number(splitedDate[1]);
+
+// 		const isChatRequestConsistent = 
 		
-			typeof(chat) === 'object' && (
+// 			typeof(chat) === 'object' && (
 
-				('timeToInit' in chat) && ('usersQty' in chat) && ('dateToInit' in chat) 
+// 				('timeToInit' in chat) && ('usersQty' in chat) && ('dateToInit' in chat) 
 
-			) && ( 
+// 			) && ( 
 				
-				typeof(chat.timeToInit) === 'string' ) && ( typeof(chat.dateToInit) === 'string') && ( typeof(chat.usersQty) === 'number'
+// 				typeof(chat.timeToInit) === 'string' ) && ( typeof(chat.dateToInit) === 'string') && ( typeof(chat.usersQty) === 'number'
 				
-			) && (
+// 			) && (
 
-				/(\d{2})-(\d{2})-(\d{4})/.test(chat.dateToInit)
+// 				(/(\d{2})-(\d{2})-(\d{4})/.test(chat.dateToInit)) && (day < 32 ) && (month < 13)
 
-			) && (
+// 			) && (
 
-				/(\d{2}):(\d{2})/.test(chat.timeToInit)
-			);
+// 				/(\d{2}):(\d{2})/.test(chat.timeToInit)
+// 			);
 
-		return isChatRequestConsistent;
-	}
+// 		return isChatRequestConsistent;
+// 	}
 
-	generateCodeHash(chat: Chat, request: Request): string {
+// 	generateCodeHash(chat: Chat, request: Request): string {
 
-		const randomNumber			= Math.random();
-		const dataToGenerateChat 	= `${JSON.stringify(chat)}${ckey.SECRET_KEY}${randomNumber}${request.headers.host}`;
-		const codeHash = hashGenerator(dataToGenerateChat);
+// 		const randomNumber			= Math.random();
+// 		const dataToGenerateChat 	= `${JSON.stringify(chat)}${ckey.SECRET_KEY}${randomNumber}${request.headers.host}`;
+// 		const codeHash = hashGenerator(dataToGenerateChat);
 
-		return codeHash;
-	}
-}
+// 		return codeHash;
+// 	}
+// }
