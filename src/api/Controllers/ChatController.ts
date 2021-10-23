@@ -1,9 +1,9 @@
-import ChatRepository 			from '../Data/Repositories/ChatRepository';
-import ChatControllerValidator	from '../Validations/Controllers/ChatControllerValidator';
-import { Request, Response }	from 'express';
-import { ValidationReturn }		from '../Validations/Types/ValidationReturn';
-import GenerateHash				from '../Utils/GenerateHash';
-import { CreateChatDTO } from '../Data/DTOs/ChatDTO';
+import ChatRepository 					from '../Data/Repositories/ChatRepository';
+import ChatControllerValidator			from '../Validations/Controllers/ChatControllerValidator';
+import { Request, Response }			from 'express';
+import { ValidationReturn }				from '../Validations/Types/ValidationReturn';
+import GenerateHash						from '../Utils/GenerateHash';
+import { CreateChatDTO, RequestChatDTO }from '../Data/DTOs/ChatDTO';
 
 export default class ChatController {
 
@@ -19,30 +19,39 @@ export default class ChatController {
 
 		try{
 
-			const usersQuantity: number = request.body.usersQuantity;
-			const usersQuantityValidation: ValidationReturn = this.chatControllerValidator.checkUserQuantity(usersQuantity);
+			const requestBody: RequestChatDTO = request.body;
+			const requestBodyValidation: ValidationReturn = this.chatControllerValidator.checkChatRequestBody(requestBody);
 
-			if(usersQuantityValidation.isValid){
+			if(requestBodyValidation.isValid){
 
 				const chat: CreateChatDTO = {
-					usersQty: usersQuantity,
-					code: GenerateHash(`${new Date()}`)
+					usersQty: requestBody.usersQty,
+					code: GenerateHash(`${new Date()}`),
+					name: requestBody.name
 				};
 
 				this.chatRepository.createChat(chat).then( result => {
-					return result.success ? response.status(200).json({chat}) : response.status(500);
+
+					return result.success ? response.status(200).json({
+						success: true,
+						data: chat
+					}) : response.status(500).json({
+						success: false,
+						data: null
+					});
+
 				});
 
 				return response.status(200).json({
 					success: false,
-					message: usersQuantityValidation.message
+					message: requestBodyValidation.message
 				});
 
 			}else{
 
 				return response.status(400).json({
 					success: false,
-					message: usersQuantityValidation.message
+					message: requestBodyValidation.message
 				});
 			}
 
