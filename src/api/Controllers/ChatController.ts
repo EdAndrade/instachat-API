@@ -30,7 +30,15 @@ export default class ChatController {
 				};
 
 				this.chatRepository.createChat(chat).then( result => {
-					return result.success ? response.status(200).json({chat}) : response.status(500);
+
+					return result.success ? response.status(200).json({
+						success: true,
+						data: chat
+					}) : response.status(500).json({
+						success: false,
+						data: null
+					});
+
 				});
 
 				return response.status(200).json({
