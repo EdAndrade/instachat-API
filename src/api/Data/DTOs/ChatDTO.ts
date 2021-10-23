@@ -1,12 +1,17 @@
+export interface RequestChatDTO {
+	usersQty		: number,
+	name			: string
+}
+
 export interface CreateChatDTO {
 	code			: string,
 	usersQty		: number,
+	name			: string
 }
 
 export interface ChatDTO {
 	id				: number,
-	codeHash		: string,
+	code			: string,
 	usersQty		: number,
-	timeToInit		: string,
-	dateToInit		: string
+	name			: string,
 }

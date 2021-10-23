@@ -11,9 +11,10 @@ export default class ChatRepository {
 			try{
 
 				pool.query(
-					`INSERT INTO chatsinfo(code, users_qty) VALUES(?,?)`,[
+					`INSERT INTO chatsinfo(code, users_qty, chat_name) VALUES(?,?)`,[
 						chat.code,
 						chat.usersQty,
+						chat.name,
 					],
 		
 					(error: unknown, results: any) => {
