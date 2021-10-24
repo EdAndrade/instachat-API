@@ -2,11 +2,8 @@ import { WebSocketServer } from 'ws';
 
 export default class ChatSocket {
 
-	private readonly _socket: WebSocketServer;
-
 	constructor(socket: WebSocketServer){
-		this._socket = socket;
-		this.handleSocket(this._socket);
+		this.handleSocket(socket);
 	}
 
 	handleSocket(socket: WebSocketServer): void {
