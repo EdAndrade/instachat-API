@@ -31,21 +31,14 @@ export default class ChatController {
 					name: requestBody.name
 				};
 
-				this.chatRepository.createChat(chat).then( result => {
+				const result = await this.chatRepository.createChat(chat);
 
-					return result.success ? response.status(200).json({
-						success: true,
-						data: chat
-					}) : response.status(500).json({
-						success: false,
-						data: null
-					});
-
-				});
-
-				return response.status(200).json({
+				return result.success ? response.status(200).json({
+					success: true,
+					data: chat
+				}) : response.status(500).json({
 					success: false,
-					message: requestBodyValidation.message
+					data: null
 				});
 
 			}else{
