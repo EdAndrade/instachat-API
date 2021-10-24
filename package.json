@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "ts-watch": "tsc -w",
-    "dev": "nodemon dist/api/server.js -HOST=0.0.0.0",
+    "dev": "nodemon dist/server.js -HOST=0.0.0.0",
     "test": "jest --coverage",
     "lint": "eslint . --ext .ts .js"
   },
