@@ -9,16 +9,18 @@
 		"strict": true,
 		"esModuleInterop": true,
 		"sourceMap": true,
-		"outDir": "dist"
+		"outDir": "dist",
+		"baseUrl": "./TsModules",
+		"paths": {
+			"mysql-migrations": [ "mysql-migrations.d.ts" ],
+			"ckey": [ "ckey.d.ts" ],
+			"crypto": [ "crypto.d.ts" ]
+		}
 	},
 
 	"lib": ["es2015"],
 
-	"include": [
-		"src","non-typed-modules.d.ts"
-	],
-
 	"exclude": [
 		"src/tests"
-	]
+	],
 }
