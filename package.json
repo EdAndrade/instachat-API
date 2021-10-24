@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "ts-watch": "tsc -w",
-    "dev": "nodemon dist/api/server.js -HOST=0.0.0.0",
+    "dev": "nodemon dist/server.js -HOST=0.0.0.0",
     "test": "jest --coverage",
     "lint": "eslint . --ext .ts .js"
   },
@@ -37,6 +37,7 @@
     "@types/jest": "26.0.24",
     "@types/mocha": "8.2.3",
     "@types/mysql": "2.15.19",
+    "@types/node": "16.11.4",
     "@types/supertest": "2.0.11",
     "chai": "4.3.4",
     "chai-http": "4.3.0",
@@ -46,6 +47,8 @@
     "nodemon": "2.0.12",
     "supertest": "6.1.3",
     "ts-jest": "27.0.3",
+    "ts-node": "10.4.0",
+    "tslib": "2.3.1",
     "typescript": "4.3.5"
   },
   "jest": {

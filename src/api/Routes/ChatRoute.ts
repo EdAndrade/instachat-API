@@ -4,6 +4,6 @@ import { Router }		from 'express';
 const router 			= Router();
 const chatController	= new ChatController();
 
-router.post('/generate_code'	, chatController.createChat);
+router.post('/generate_chat'	, chatController.createChat);
 
 export default router;

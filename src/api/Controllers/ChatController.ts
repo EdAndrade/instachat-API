@@ -4,6 +4,7 @@ import { Request, Response }			from 'express';
 import { ValidationReturn }				from '../Validations/Types/ValidationReturn';
 import GenerateHash						from '../Utils/GenerateHash';
 import { CreateChatDTO, RequestChatDTO }from '../Data/DTOs/ChatDTO';
+import ckey								from 'ckey';
 
 export default class ChatController {
 
@@ -13,12 +14,13 @@ export default class ChatController {
 	constructor(){
 		this.chatRepository 			= new ChatRepository();
 		this.chatControllerValidator	= new ChatControllerValidator();
+		this.createChat					= this.createChat.bind(this);
 	}
 
 	async createChat(request: Request, response: Response): Promise<Response> {
 
 		try{
-
+			
 			const requestBody: RequestChatDTO = request.body;
 			const requestBodyValidation: ValidationReturn = this.chatControllerValidator.checkChatRequestBody(requestBody);
 
@@ -26,25 +28,18 @@ export default class ChatController {
 
 				const chat: CreateChatDTO = {
 					usersQty: requestBody.usersQty,
-					code: GenerateHash(`${new Date()}`),
+					code: GenerateHash(`${new Date()}${ckey.SECRET_KEY}`),
 					name: requestBody.name
 				};
 
-				this.chatRepository.createChat(chat).then( result => {
+				const result = await this.chatRepository.createChat(chat);
 
-					return result.success ? response.status(200).json({
-						success: true,
-						data: chat
-					}) : response.status(500).json({
-						success: false,
-						data: null
-					});
-
-				});
-
-				return response.status(200).json({
+				return result.success ? response.status(200).json({
+					success: true,
+					data: chat
+				}) : response.status(500).json({
 					success: false,
-					message: requestBodyValidation.message
+					data: null
 				});
 
 			}else{
