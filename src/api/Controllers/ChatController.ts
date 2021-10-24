@@ -4,6 +4,7 @@ import { Request, Response }			from 'express';
 import { ValidationReturn }				from '../Validations/Types/ValidationReturn';
 import GenerateHash						from '../Utils/GenerateHash';
 import { CreateChatDTO, RequestChatDTO }from '../Data/DTOs/ChatDTO';
+import ckey								from 'ckey';
 
 export default class ChatController {
 
@@ -27,7 +28,7 @@ export default class ChatController {
 
 				const chat: CreateChatDTO = {
 					usersQty: requestBody.usersQty,
-					code: GenerateHash(`${new Date()}`),
+					code: GenerateHash(`${new Date()}${ckey.SECRET_KEY}`),
 					name: requestBody.name
 				};
 
