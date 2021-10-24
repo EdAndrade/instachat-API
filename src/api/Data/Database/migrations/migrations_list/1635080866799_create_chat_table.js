@@ -4,7 +4,7 @@ module.exports = {
 			id INT AUTO_INCREMENT PRIMARY_KEY,
 			code VARCHAR(100),
 			users_qty INT,
-			name VARCHAR(128),
+			chat_name VARCHAR(128),
 		`,
 
 	"down": "DROP TABLE chats"
