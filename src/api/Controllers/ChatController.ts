@@ -13,12 +13,13 @@ export default class ChatController {
 	constructor(){
 		this.chatRepository 			= new ChatRepository();
 		this.chatControllerValidator	= new ChatControllerValidator();
+		this.createChat					= this.createChat.bind(this);
 	}
 
 	async createChat(request: Request, response: Response): Promise<Response> {
 
 		try{
-
+			
 			const requestBody: RequestChatDTO = request.body;
 			const requestBodyValidation: ValidationReturn = this.chatControllerValidator.checkChatRequestBody(requestBody);
 

@@ -4,6 +4,7 @@ import { RequestChatDTO }	from '../../Data/DTOs/ChatDTO';
 export default class ChatControllerValidator {
 
 	checkChatRequestBody(chat: RequestChatDTO): ValidationReturn {
+		console.log(chat);
 
 		try{
 
@@ -21,7 +22,7 @@ export default class ChatControllerValidator {
 	
 				return {
 					isValid: false,
-					message: 'Por favor insira um número válido!'
+					message: 'Por favor insira dados válidos!'
 				};
 			}
 
