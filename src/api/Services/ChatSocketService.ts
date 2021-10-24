@@ -1,4 +1,4 @@
-import ws, { WebSocketServer } from 'ws';
+import { WebSocketServer } from 'ws';
 
 export default class ChatSocket {
 
