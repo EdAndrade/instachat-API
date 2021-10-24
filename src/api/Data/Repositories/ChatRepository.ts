@@ -4,6 +4,13 @@ import { ResponseDTO }		from '../DTOs/ResponseDTO';
 
 export default class ChatRepository {
 
+	private rejectResponse(error: unknown): ResponseDTO {
+		return {
+			success: false,
+			result: error
+		};
+	}
+
 	createChat(chat: CreateChatDTO): Promise<ResponseDTO>{
 
 		return new Promise( (resolve, reject) => {
@@ -20,10 +27,7 @@ export default class ChatRepository {
 					(error: unknown, results: any) => {
 						
 						if( (!!error) === true){
-							reject({
-								success: false,
-								result: error
-							});
+							reject(this.rejectResponse(error));
 						}
 
 						resolve({
@@ -37,11 +41,7 @@ export default class ChatRepository {
 				);
 
 			}catch(error){
-				
-				reject({
-					success: false,
-					result: error
-				});
+				reject(this.rejectResponse(error));
 			}
 
 		});
@@ -56,11 +56,7 @@ export default class ChatRepository {
 				pool.query(`SELECT * FROM chatsinfo WHERE code = ?`,[chatCode],(error, result, fields) => {
 					
 					if((!!error) === true){
-
-						reject({
-							success: false,
-							result: error
-						});
+						reject(this.rejectResponse(error));
 					}
 
 					resolve({
@@ -70,11 +66,7 @@ export default class ChatRepository {
 				});
 
 			}catch(error){
-
-				reject({
-					success: false,
-					result: error
-				});
+				reject(this.rejectResponse(error));
 			}
 		});
 	}
