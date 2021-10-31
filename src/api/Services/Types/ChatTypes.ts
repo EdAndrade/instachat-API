@@ -1,8 +1,8 @@
 export interface ChatRoom {
 	code: string,
 	users_qty: number,
-	name: string,
-	ws: Array<WebSocket>
+	chat_name: string,
+	ws: Array<unknown>
 }
 
 export interface CreateChatRoom {

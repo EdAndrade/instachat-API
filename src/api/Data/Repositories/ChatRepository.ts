@@ -18,7 +18,7 @@ export default class ChatRepository {
 
 	createChat(chat: CreateChatDTO): Promise<ResponseDTO>{
 
-		return new Promise( (resolve, reject) => {
+		return new Promise( (resolve) => {
 
 			try{
 
@@ -45,7 +45,7 @@ export default class ChatRepository {
 				);
 
 			}catch(error){
-				reject(this.rejectResponse(error));
+				resolve(this.rejectResponse(error));
 			}
 
 		});
@@ -53,25 +53,28 @@ export default class ChatRepository {
 
 	getChat(chatCode: string): Promise<ResponseDTO> {
 
-		return new Promise( (resolve, reject) => {
+		return new Promise( (resolve) => {
 
-			try{
+			
 
-				pool.query(`SELECT * FROM chatsinfo WHERE code = ?`,[chatCode],(error, result, fields) => {
+			pool.query(`SELECT * FROM chats WHERE code = ?`,[chatCode],(error, result, fields) => {
+				
+				try{
 					
-					if((!!error) === true){
-						reject(this.rejectResponse(error));
+					if( ((!!error) === true) || result[0] === undefined){
+						resolve(this.rejectResponse(error));
 					}
-
+					
 					resolve({
 						success: true,
 						result: result[0]
 					});
-				});
 
-			}catch(error){
-				reject(this.rejectResponse(error));
-			}
+				}catch(error){
+					resolve(this.rejectResponse(error));
+				}
+			});
+			
 		});
 	}
 }
