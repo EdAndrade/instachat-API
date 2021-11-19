@@ -78,12 +78,13 @@ export default class ChatSocket {
 		
 		if(response.success){
 
-			this.chatRooms.push({
-				code		: response.result.code,
-				users_qty	: response.result.users_qty,
-				chat_name	: response.result.chat_name,
-				ws: [ws]
-			});
+			console.log(response);
+			// this.chatRooms.push({
+			// 	code		: response.result.code,
+			// 	users_qty	: response.result.users_qty,
+			// 	chat_name	: response.result.chat_name,
+			// 	ws: [ws]
+			// });
 
 			return true;
 		}

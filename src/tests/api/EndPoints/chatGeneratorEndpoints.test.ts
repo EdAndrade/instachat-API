@@ -1,63 +1,63 @@
-import supertest 	from 'supertest';
-import app			from '../../../api/app';
+// import supertest 	from 'supertest';
+// import app			from '../../../api/app';
 
-describe('Right path', () => {
+// describe('Right path', () => {
 
-	describe("POST /generate_code", () => {
-		//should save the username and password to the database
+// 	describe("POST /generate_code", () => {
+// 		//should save the username and password to the database
 	
-		it("should respond with a 200 status code", (done) => {
+// 		it("should respond with a 200 status code", (done) => {
 	
-			supertest(app).post("/api/chat/generate_code").send({
-				usersQty	: 3,
-				timeToInit	: '12:04',
-				dateToInit	: '02-02-2020'
-			}).then( response => {
-				expect(response.statusCode).toBe(200);
-				done();
-			});
-		});
-	});
+// 			supertest(app).post("/api/chat/generate_code").send({
+// 				usersQty	: 3,
+// 				timeToInit	: '12:04',
+// 				dateToInit	: '02-02-2020'
+// 			}).then( response => {
+// 				expect(response.statusCode).toBe(200);
+// 				done();
+// 			});
+// 		});
+// 	});
 
-});
+// });
 
-describe('Wrong path', () => {
+// describe('Wrong path', () => {
 
-	describe("POST /generate_code", () => {
+// 	describe("POST /generate_code", () => {
 	
-		it("should respond with a 400 status code", (done) => {
+// 		it("should respond with a 400 status code", (done) => {
 	
-			supertest(app).post("/api/chat/generate_code").send({
-				UsersQuantity	: 3,
-				timeToInit		: '13',
-				dateToInit		: '02-02-2020'
-			}).then( response => {
-				expect(response.statusCode).toBe(400);
-				done();
-			});
-		});
+// 			supertest(app).post("/api/chat/generate_code").send({
+// 				UsersQuantity	: 3,
+// 				timeToInit		: '13',
+// 				dateToInit		: '02-02-2020'
+// 			}).then( response => {
+// 				expect(response.statusCode).toBe(400);
+// 				done();
+// 			});
+// 		});
 
-		it("should respond with a 400 status code", (done) => {
+// 		it("should respond with a 400 status code", (done) => {
 	
-			supertest(app).post("/api/chat/generate_code").send({
-				usersQty		: "2",
-				timeToInit		: '2020-02-02'
-			}).then( response => {
-				expect(response.statusCode).toBe(400);
-				done();
-			});
-		});
+// 			supertest(app).post("/api/chat/generate_code").send({
+// 				usersQty		: "2",
+// 				timeToInit		: '2020-02-02'
+// 			}).then( response => {
+// 				expect(response.statusCode).toBe(400);
+// 				done();
+// 			});
+// 		});
 
-		it("should respond with a 400 status code", (done) => {
+// 		it("should respond with a 400 status code", (done) => {
 	
-			supertest(app).post("/api/chat/generate_code").send({
-				usersQty		: "2",
-				timeToInit		: '2020-02-02',
-				dateToInit		: '15'
-			}).then( response => {
-				expect(response.statusCode).toBe(400);
-				done();
-			});
-		});
-	});
-});
+// 			supertest(app).post("/api/chat/generate_code").send({
+// 				usersQty		: "2",
+// 				timeToInit		: '2020-02-02',
+// 				dateToInit		: '15'
+// 			}).then( response => {
+// 				expect(response.statusCode).toBe(400);
+// 				done();
+// 			});
+// 		});
+// 	});
+// });
