@@ -18,17 +18,13 @@ describe('Right path' , () => {
 			});
 		});
 
-		it('should have informed properties', ( done ) => {
+		it('should have code property', ( done ) => {
 
 			supertest(app).post('/api/chat/generate_chat').send({
 				"usersQty": 4,
 				"name": "test"
-
 			}).then( response => {
-
-				expect(response).toHaveProperty('userQty');
-				expect(response).toHaveProperty('name');
-				expect(response).toHaveProperty('code');
+				expect(JSON.parse(response.text)).toHaveProperty(['data', 'code']);
 				done();
 			});
 		});
