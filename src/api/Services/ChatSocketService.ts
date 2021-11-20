@@ -44,7 +44,7 @@ export default class ChatSocket {
 				
 			
 
-			socket.on("message", data => {
+			ws.on("message", data => {
 
 				ws.send("recivied");
 			});
@@ -57,13 +57,15 @@ export default class ChatSocket {
 	}
 
 	addNewElementToAChatRoom(chatCode: string, ws: unknown): boolean {
-
+		
 		try{
 
 			this.chatRooms.forEach( chatRoom => {
 				if(chatRoom.code === chatCode)
 					chatRoom.ws.push(ws);
 			});
+
+			console.log(this.chatRooms);
 
 			return true;
 
@@ -74,17 +76,18 @@ export default class ChatSocket {
 
 	async addNewChatRoom(chatCode: string, ws: unknown): Promise<boolean> {
 
-		const response = await this.chatRepository.getChat(chatCode);
+		const response: any = await this.chatRepository.getChat(chatCode);
 		
 		if(response.success){
 
 			console.log(response);
-			// this.chatRooms.push({
-			// 	code		: response.result.code,
-			// 	users_qty	: response.result.users_qty,
-			// 	chat_name	: response.result.chat_name,
-			// 	ws: [ws]
-			// });
+			this.chatRooms.push({
+				code		: response.result.code,
+				users_qty	: response.result.users_qty,
+				chat_name	: response.result.chat_name,
+				ws: [ws]
+			});
+			console.log(this.chatRooms);
 
 			return true;
 		}

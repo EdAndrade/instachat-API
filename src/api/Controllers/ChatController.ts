@@ -54,4 +54,31 @@ export default class ChatController {
 			return response.status(500);
 		}
 	}
+
+	async startChat(request: Request, response: Response): Promise<Response> {
+
+		try{
+
+			const chatCode 		= request.body.chatCode;
+			const response: any = await this.chatRepository.getChat(chatCode);
+
+			if(response.success){
+				
+				return response.status(200).json({
+					success: true,
+					message: ''
+				});
+
+			}else{
+
+				return response.status(404).json({
+					success: false,
+					message: ''
+				});
+			}
+
+		}catch(error){
+			return response.status(500);
+		}
+	}
 }
