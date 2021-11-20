@@ -2,7 +2,7 @@ export interface ChatRoom {
 	code: string,
 	users_qty: number,
 	chat_name: string,
-	ws: Array<unknown>
+	ws: Array<any>
 }
 
 export interface CreateChatRoom {

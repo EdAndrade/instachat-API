@@ -12,6 +12,7 @@ export default class ChatSocket {
 		this.checkChatRoomExistence 	= this.checkChatRoomExistence.bind(this);
 		this.addNewElementToAChatRoom 	= this.addNewElementToAChatRoom.bind(this);
 		this.addNewChatRoom 			= this.addNewChatRoom.bind(this);
+		this.handleWsMessage			= this.handleWsMessage.bind(this);
 		this.chatRooms 					= [];
 		this.chatRepository 			= new ChatRepository();
 
@@ -40,14 +41,11 @@ export default class ChatSocket {
 
 			}else{
 				ws.terminate();
-			}	
-				
-			
+			}
 
-			ws.on("message", data => {
-
-				ws.send("recivied");
-			});
+			ws.on("message", (data: unknown) => {
+				this.handleWsMessage(data);
+			});	
 		});
 	}
 
@@ -65,8 +63,6 @@ export default class ChatSocket {
 					chatRoom.ws.push(ws);
 			});
 
-			console.log(this.chatRooms);
-
 			return true;
 
 		}catch{
@@ -80,17 +76,40 @@ export default class ChatSocket {
 		
 		if(response.success){
 
-			console.log(response);
 			this.chatRooms.push({
 				code		: response.result.code,
 				users_qty	: response.result.users_qty,
 				chat_name	: response.result.chat_name,
 				ws: [ws]
 			});
-			console.log(this.chatRooms);
 
 			return true;
 		}
 		return false;
+	}
+
+	formatData(data: any): any {
+
+		let newData = "";
+
+		for(let i = 0; i < data.length; i++){
+			newData += String.fromCharCode(data[i]);
+		}
+		return JSON.parse(newData);
+	}
+
+	handleWsMessage(data: any): void{
+
+		data = this.formatData(data);
+
+		if(data.chatCode && data.message){
+			this.chatRooms.forEach( chatRoom => {
+				if(chatRoom.code === data.chatCode){
+					chatRoom.ws.forEach( ws => {
+						ws.send(data.message);
+					});
+				}
+			});
+		}
 	}
 }
