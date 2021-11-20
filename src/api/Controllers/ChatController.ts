@@ -15,6 +15,7 @@ export default class ChatController {
 		this.chatRepository 			= new ChatRepository();
 		this.chatControllerValidator	= new ChatControllerValidator();
 		this.createChat					= this.createChat.bind(this);
+		this.startChat					= this.startChat.bind(this);
 	}
 
 	async createChat(request: Request, response: Response): Promise<Response> {
@@ -60,7 +61,7 @@ export default class ChatController {
 		try{
 
 			const chatCode = request.body.chatCode;
-
+			
 			return this.chatRepository.getChat(chatCode).then( chatResponse => {
 
 				return chatResponse.success ? response.status(200).json({
