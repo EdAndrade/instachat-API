@@ -59,23 +59,19 @@ export default class ChatController {
 
 		try{
 
-			const chatCode 		= request.body.chatCode;
-			const response: any = await this.chatRepository.getChat(chatCode);
+			const chatCode = request.body.chatCode;
 
-			if(response.success){
-				
-				return response.status(200).json({
+			return this.chatRepository.getChat(chatCode).then( chatResponse => {
+
+				return chatResponse.success ? response.status(200).json({
 					success: true,
 					message: ''
-				});
 
-			}else{
-
-				return response.status(404).json({
+				}) : response.status(404).json({
 					success: false,
 					message: ''
 				});
-			}
+			});
 
 		}catch(error){
 			return response.status(500);
