@@ -106,6 +106,10 @@ export default class ChatSocket {
 			this.chatRooms.forEach( chatRoom => {
 				if(chatRoom.code === data.chatCode){
 					chatRoom.ws.forEach( ws => {
+						
+						if(ws.isAlive === false)
+							ws.terminate();
+
 						ws.send(data.message);
 					});
 				}
